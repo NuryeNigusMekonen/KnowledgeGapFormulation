@@ -1,0 +1,7 @@
+The evening call clarified that my Day 1 question is not the same as my friend's narrower latency question. My friend's question asks what caused one reported runtime number: was the measured delay mostly prompt processing or token generation, and which parameter should be tuned to make the evaluator faster. My question is broader and more system-level: when TheConversionEngine repeats structured context across LLM calls, how do prefill, decode, and KV or prefix caching interact, which prompt changes break reuse, and how should prompt assembly be redesigned to reduce latency and cost without changing behavior.
+
+That distinction made the package more grounded. The explainer now ties the gap directly to the repeated prompt assembly in agent/policies/service.py and to the Week 11 latency and cost reporting in held_out_traces.jsonl and method.md. The key improvement was making clear that the real issue is not just explaining one latency number, but understanding when repeated prompt content is actually reusable and how that should change the way the Week 10 agent constructs prompts for later inference and evaluation steps.
+
+Sign-off: gap closed.
+
+Grounding edit for existing work: I can now revise the Week 11 latency explanation with a real prefill-versus-decode account, and I can justify a stable-prefix versus volatile-suffix prompt design for the Week 10 agent instead of assuming repeated context is automatically cached.
