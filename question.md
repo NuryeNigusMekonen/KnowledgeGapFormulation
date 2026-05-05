@@ -1,7 +1,0 @@
-# Final Question
-
-In my Week 10 repo, TheConversionEngine, the outreach path in agent/policies/service.py keeps passing a lot of repeated structured context into `generation_service.draft_email_from_scaffold`: segment labels, signal summaries, confidence-by-signal, top-quartile practices, safe-gap framing, and do-not-claim rules. In the same repo's Week 11 artifacts, held_out_traces.jsonl and method.md report latency, cost, and token totals, but I still cannot explain which part of that time is prefill versus decode or when repeated prompt content is actually being reused by the provider.
-
-My gap is this: how do prefill, decode, and KV or prefix caching interact during inference for a multi-turn sales agent, what exact prompt changes break reuse, and which prompt-assembly choices would cut latency and cost without changing the agent's behavior?
-
-This matters because I want to fix both the explanation and the system. I need to revise the latency and cost story in method.md and held_out_traces.jsonl, and I need to redesign the prompt assembly in agent/policies/service.py so I can defend when repeated context should stay, when it should be summarized, and when caching is actually real versus just assumed.

@@ -1,5 +1,0 @@
-We started from a softer draft: "How does KV cache work and why does it matter for latency?" That version was too textbook and too generic. It did not name the actual artifact where the gap was hurting the work.
-
-During the call, the question got anchored to two shipped artifacts in TheConversionEngine: the Week 10 policy-plus-generation path in agent/policies/service.py, which keeps passing structured signal and competitor context into the email draft call, and the Week 11 evaluation artifacts held_out_traces.jsonl and method.md, where latency and cost were reported but not broken into prefill versus decode. The key interrogation was whether the real confusion was "what KV cache is" or "when repeated prompt tokens are actually reusable in an API workflow."
-
-The final version narrowed to the actual load-bearing mechanism: prefill, decode, exact-prefix reuse, and cache invalidation. That kept the question general enough to matter for other FDE agent systems, but specific enough to support a 600 to 1,000 word explainer with a concrete demonstration.
