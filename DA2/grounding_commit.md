@@ -1,0 +1,9 @@
+# Grounding Commit — DA2
+
+Artifact edited: agent/orchestration/handoff.py and method.md in TheConversionEngine (Week 10 repo).
+
+The edit to method.md revises the architecture description section to distinguish three control patterns: deterministic scaffolding (the tool sequence in agent/orchestration/service.py), model-assisted rewriting (generation_service.draft_email_from_scaffold), and model-led review (the Week 11 judge and governance layers). The previous version described the system as a "sales agent with tools" without clarifying that tool order, state transitions, and side effects are fixed in code. The revised version names exactly where the model contributes and where the orchestrator enforces behavior, so the architecture claim is defensible rather than aspirational.
+
+The edit to agent/orchestration/handoff.py adds a comment at the top of route_inbound_message() explaining that the current keyword-matching intent detection is a deterministic code path, not a model classification. This documents the known limitation — paraphrase opt-outs that do not match _HARD_NO_TOKENS fall through to the scheduling branch — and marks the function as the correct insertion point for a classify_reply_intent function-calling tool if the system is upgraded to model-led intent detection. The comment names the token-level mechanism (constrained decoding over an intent enum) so a future reader knows what the replacement should do, not just that one is needed.
+
+What changed and why: the prior description overclaimed the model's role in tool selection. A system where code decides every step and the model rewrites within a fixed scaffold is not the same as a system where the model chooses tools. Making that distinction explicit in method.md corrects the architecture narrative and makes the Week 11 proactive tool-use note interpretable in context.

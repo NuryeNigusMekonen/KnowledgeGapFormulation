@@ -1,32 +1,28 @@
-# DA2 Candidate Sources
+# DA2 Sources
 
-## Core Sources
+## Canonical Sources
 
-1. Anthropic documentation on tool use and prompt engineering for tool calling.
-Why it matters: useful for separating native tool use from ordinary text generation with structured prompts.
+1. Anthropic documentation on tool use.
+Why it matters: this is the clearest primary source for how provider-native tool calling works, including typed schemas, constrained generation, and the `tool_use` / `tool_result` pattern.
 
-2. OpenAI documentation on function calling / structured outputs.
-Why it matters: helpful for understanding what guarantees provider-native schemas and tool calls add beyond plain JSON prompting.
+2. OpenAI documentation on function calling and structured outputs.
+Why it matters: useful for contrasting provider-native structured output with ordinary JSON prompting and for explaining why schemas constrain what the model is allowed to emit.
 
-3. MCP specification or official documentation.
-Why it matters: useful if the explainer ends up covering how tool capability is exposed to a model and why tool descriptions matter.
+3. Brown et al., "Language Models are Few-Shot Learners" (GPT-3).
+Why it matters: helpful for the token-by-token generation framing behind the explainer's discussion of logits, vocabulary distributions, and constrained continuation.
 
-## Local Evidence From My Project
+## Local Evidence From TheConversionEngine
 
-1. `agent/orchestration/service.py`
-Use it to show that tool order, side effects, retries, and delivery routing are mostly scaffolded in code.
+1. `agent/orchestration/handoff.py`
+Use it to show the current keyword-matching reply handling path that the proposed `classify_reply_intent` tool would replace.
 
 2. `agent/generation/service.py`
-Use it to show that the current model call rewrites a draft through prompted JSON output rather than native function calling.
+Use it to contrast ordinary prompted generation with provider-native function calling and to show where the current generation layer is only rewriting content.
 
-3. `agent/policies/service.py`
-Use it to show how hard-coded policy, risk flags, and scaffold assembly shape what the model is allowed to rewrite.
+3. `agent/orchestration/service.py`
+Use it as the broader pipeline context for where message handling and downstream actions currently sit in the orchestrated flow.
 
-4. `method.md` and `README.md`
-Use them to identify where the architecture is described in higher-level language that now needs a cleaner account of scaffolding versus model-led behavior.
+## Tool / Pattern Used
 
-## Likely Argument Map
-
-1. A model can participate in an agent system without being the component that selects or executes tools.
-2. Deterministic orchestration, native function calling, and structured JSON prompting are different control patterns with different guarantees.
-3. The Tenacious system currently leans heavily on scaffolding and guardrails, so the explainer should clarify where the model actually contributes and where code enforces behavior.
+1. Function-calling schema design with an enum-constrained intent field.
+Why it matters: this is the concrete pattern the explainer used to make the reply-classification mechanism visible instead of describing it only in abstract terms.
