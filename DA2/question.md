@@ -1,0 +1,7 @@
+# Final Question
+
+In my Week 10 repo, TheConversionEngine, the system is described as a sales agent with tools, but the main control path looks mostly hand-authored: `/pipeline/run` calls `orchestrator.run_toolchain`, which deterministically runs enrichment lookups, email send, SMS handoff preview, Cal.com preview, HubSpot sync, and Langfuse mirroring. The model appears mainly in `generation_service.draft_email_from_scaffold` for rewriting a safe draft and in the Week 11 judge and governance layers that review candidate actions.
+
+My gap is this: in a system like this, when is it technically correct to say the model is using tools, and when is it more accurate to say the orchestrator is using tools while the model only rewrites or reviews content? Put differently, if tool order, state transitions, and side effects are fixed in code, where does planning actually live, and how should I reason about failures and evaluation across that boundary?
+
+This matters because I want to revise how I describe the architecture in `method.md` and `README.md`, and I want to explain why the Week 11 note about a proactive tool-use instruction mattered when my own Week 10 toolchain does not appear to expose native function-calling or model-chosen tool schemas. I do not want to overclaim that the model itself is using tools when much of the behavior may actually come from the orchestrator and guardrail code.
