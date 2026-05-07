@@ -5,11 +5,11 @@
 1. Anthropic documentation on tool use.
 Why it matters: this is the clearest primary source for how provider-native tool calling works, including typed schemas, constrained generation, and the `tool_use` / `tool_result` pattern.
 
-2. OpenAI documentation on function calling and structured outputs.
-Why it matters: useful for contrasting provider-native structured output with ordinary JSON prompting and for explaining why schemas constrain what the model is allowed to emit.
+2. OpenAI documentation on Structured Outputs.
+Why it matters: this is the clearest source for schema-constrained generation, enum-safe outputs, and the difference between a valid JSON shape and a provider-enforced structured output.
 
-3. Brown et al., "Language Models are Few-Shot Learners" (GPT-3).
-Why it matters: helpful for the token-by-token generation framing behind the explainer's discussion of logits, vocabulary distributions, and constrained continuation.
+3. OpenAI documentation on function calling.
+Why it matters: useful for connecting structured model outputs to the application-side loop where the host executes actions or branches on the model's returned structure.
 
 ## Local Evidence From TheConversionEngine
 
