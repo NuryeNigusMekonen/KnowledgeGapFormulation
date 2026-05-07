@@ -14,6 +14,7 @@ The Day 2 package centers on agent tool-use internals, specifically the differen
 
 - Day 1 blog post: https://open.substack.com/pub/nuryenigus/p/what-actually-gets-faster-in-a-sales?r=8bo5sh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
 - Day 2 blog post: https://open.substack.com/pub/nuryenigus/p/what-the-model-is-actually-doing?r=8bo5sh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
+- Day 3 blog post: https://open.substack.com/pub/nuryenigus/p/why-preference-tuned-critics-learn?r=8bo5sh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
 
 ## Contents
 
@@ -27,6 +28,9 @@ The Day 2 package centers on agent tool-use internals, specifically the differen
 - `DA2/README.md`: Day 2 package overview and public artifact link
 - `DA2/question.md`: Day 2 final sharpened question
 - `DA2/explainer.md`: Day 2 explainer written for the peer question
+- `DA3/README.md`: Day 3 package overview and public artifact link
+- `DA3/question.md`: Day 3 final sharpened question
+- `DA3/explainer.md`: Day 3 explainer written for the peer question
 - `docs/`: challenge and supporting reference documents for the week
 
 ## Status
