@@ -2,30 +2,32 @@
 
 ## Core Sources
 
-1. Kwon, Woosuk, et al. Efficient Memory Management for Large Language Model Serving with PagedAttention. SOSP 2023.
-Why it matters: this is the clearest source for explaining KV-cache behavior at serving time and why memory management affects latency and throughput.
+1. Hugging Face Transformers documentation, "Caching."
+Why it matters: this is the clearest primary technical reference for what a KV cache actually stores and why decoding can reuse past keys and values instead of recomputing them every step.
 
-2. Anthropic Documentation, Prompt Caching.
-Why it matters: this is the practical source for exact-prefix reuse, cache breakpoints, invalidation rules, TTL, and how to tell whether reuse happened in an API workflow.
+2. Kwon, Woosuk, et al. Efficient Memory Management for Large Language Model Serving with PagedAttention. SOSP 2023.
+Why it matters: this is the systems-level source for why KV-cache memory management matters in real serving infrastructure, not just in a textbook attention diagram.
 
-## Optional Supporting Source
+3. Anthropic documentation, Prompt Caching.
+Why it matters: this is the clearest practical source for exact-prefix reuse, cache hierarchy, invalidation rules, and how cacheability depends on prompt structure.
 
-1. vLLM blog, vLLM: Easy, Fast, and Cheap LLM Serving with PagedAttention.
-Why it matters: this gives a more accessible explanation of how PagedAttention manages KV-cache blocks and why that improves serving efficiency.
+4. OpenAI documentation, Prompt Caching.
+Why it matters: this is the API-boundary source for automatic prompt caching, exact prefix matching, cached token reporting, and how repeated prompt prefixes affect latency and cost in hosted inference.
 
 ## Local Evidence From My Project
 
 1. agent/policies/service.py
-Use it to show which parts of the generation prompt are stable and which are prospect-specific.
+Use it to show how stable policy framing and volatile prospect-specific fields are currently mixed in the prompt context passed into the generation layer.
 
 2. held_out_traces.jsonl
-Use it to compare prompt tokens, completion tokens, latency, and number of model calls.
+Use it to compare prompt tokens, completion tokens, latency, and number of model calls in a prompt-heavy workload.
 
 3. method.md
 Use it to show where the benchmark currently reports latency and cost without a prefill versus decode explanation.
 
 ## Argument Map
 
-1. The PagedAttention source explains why prior-token state matters during inference.
-2. The Anthropic docs explain when repeated prompt prefixes are actually reusable across requests.
-3. The local repo artifacts show why this is a real gap in my own agent and benchmark work.
+1. Hugging Face explains the within-request KV-cache mechanism that makes decode efficient.
+2. PagedAttention explains why KV-cache management becomes a serving bottleneck at system scale.
+3. Anthropic and OpenAI explain when repeated prompt prefixes can actually be reused across requests.
+4. The local repo artifacts show why this is a real interpretability and prompt-design gap in TheConversionEngine.
