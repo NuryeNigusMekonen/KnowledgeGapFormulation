@@ -1,0 +1,7 @@
+# Final Question
+
+In my Week 11 work for TheConversionEngine, I chose Path B and trained a preference-tuned judge with SimPO because the main problem looked like inconsistency near policy boundaries, not generally bad generation. But the evaluation reports show an uneven pattern: the judge is very strong on many `fail` and `needs_human_review` cases, while some `pass` and channel-policy rows remain weaker. In other words, the post-trained judge seems better at spotting violations than at confidently recognizing when an output is actually acceptable.
+
+My gap is this: why would SimPO preference training produce that kind of asymmetry? More specifically, what is it about pairwise preference optimization, the chosen/rejected data format, or the post-training objective that can make a small LoRA judge learn sharper rejection behavior than calibrated acceptance behavior? And how is that different from what we would expect from supervised fine-tuning or prompt-only changes?
+
+This matters because this is not just a modeling curiosity. If the judge is mechanically biased toward finding violations, then it can look strong on safety while still being poorly calibrated for deployment. I want to be able to explain, at the training-mechanics level, why my SimPO judge improved on some Week 10 and Week 11 failure modes but stayed weaker on others, and what that implies for how I should design preference data, evaluate the model, and decide whether the critic is actually production-ready.
