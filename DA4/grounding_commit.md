@@ -1,0 +1,5 @@
+# Grounding Commit — DA4
+
+Artifact edited: `ablation_results.json`, `method.md`, and the evaluation explanation around `eval/ablation_harness.py` in TheConversionEngine (Week 10 repo).
+
+The main change after this Day 4 gap is not that the numbers themselves suddenly changed, but that the statistical framing around them became defensible. Instead of mixing unpaired and paired interpretations of the same kind of comparison, the evaluation write-up should explain that overlapping-task comparisons require paired reasoning and that tiny paired slices produce very weak evidence even when the raw delta looks large. The corresponding narrative change in `method.md` is that uplift claims should be described in terms of what the chosen test is actually estimating and what uncertainty remains, rather than reporting a single p-value as if it closed the question by itself. In practice, that means making clearer distinctions between descriptive deltas, confidence intervals, paired-task counts, and final claims about production relevance.
