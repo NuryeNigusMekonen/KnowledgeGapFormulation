@@ -1,6 +1,6 @@
 # Week 12 Knowledge Gap Formulation
 
-This repository is my Week 12 submission for **Knowledge Gap Formulation for Compounding** in TRP1. The week focused on closing real mechanism-level gaps from my Week 10 and Week 11 portfolio work through paired daily research, public explainers, and grounded portfolio updates.
+This repository collects a set of paired research artifacts focused on closing mechanism-level gaps from my Week 10 and Week 11 portfolio work. The package combines daily questions, technical explainers, public writing, call summaries, source trails, and grounded portfolio updates.
 
 The package is organized by day. Each daily folder captures the full paired workflow required by the Week 12 challenge:
 
@@ -54,17 +54,11 @@ Grounded in Week 11 Path B critic work and peer research on preference-tuned jud
 
 Grounded in Week 11 evaluation artifacts and paired research on validation reliability. The main focus was how to interpret held-out accuracy when the held-out split is small and repeatedly reused during development, and how to separate sampling uncertainty from adaptive evaluation bias.
 
-## Purpose of the Submission
+## Purpose
 
-The point of this repository is not just to collect blog posts. Each day is meant to close a real gap that affected how I described, evaluated, or designed systems I had already built in Weeks 10 and 11. The package therefore combines:
+The purpose of this repository is not only to collect blog posts. Each day is meant to close a real gap that affected how I described, evaluated, or designed systems I had already built in Weeks 10 and 11. The package therefore combines:
 
 - public-facing technical writing
 - paired research and feedback records
 - source-backed explanations
 - grounded portfolio implications
-
-## Reference
-
-The repository follows the Week 12 challenge structure described in:
-
-- `docs/TRP1 Challenge Week 12_  Knowledge Gap Formulation for Compounding .md`
