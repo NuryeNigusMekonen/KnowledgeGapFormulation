@@ -1,14 +1,25 @@
 # Week 12 Knowledge Gap Formulation
 
-This directory contains the Week 12 Knowledge Gap Formulation workspace. The Day 1 submission package lives in `DA1/`, the Day 2 package lives in `DA2/`, and the workspace root also keeps the shared `docs/` materials for the week.
+This repository is my Week 12 submission for **Knowledge Gap Formulation for Compounding** in TRP1. The week focused on closing real mechanism-level gaps from my Week 10 and Week 11 portfolio work through paired daily research, public explainers, and grounded portfolio updates.
 
-## Day 1 Scope
+The package is organized by day. Each daily folder captures the full paired workflow required by the Week 12 challenge:
 
-The Day 1 package is centered on one inference-time mechanics question grounded in prior portfolio work from TheConversionEngine. The question focuses on prefill, decode, KV or prefix caching, and cache invalidation, with direct relevance to prompt assembly, latency interpretation, and cost analysis in the Week 10 and Week 11 artifacts.
+- my final sharpened question
+- the morning call summary
+- the explainer I wrote for my peer's question
+- the public thread draft
+- the evening call summary
+- sign-off and grounding materials for the explainer I received
+- the source list used for the explainer
 
-## Day 2 Scope
+## Week Scope
 
-The Day 2 package centers on agent tool-use internals, specifically the difference between model-driven tool use and orchestrator-driven pipelines, plus a paired explainer on reply-intent classification with structured outputs.
+The work completed here covers four paired research days:
+
+- **Day 1 — Inference-Time Mechanics:** prefill versus decode, KV cache versus prefix caching, and prompt reuse in TheConversionEngine.
+- **Day 2 — Agent Tool-Use Internals:** orchestrator-driven pipelines versus model-driven tool use, plus structured reply-intent classification.
+- **Day 3 — Training and Post-Training Mechanics:** preference tuning with SimPO and ORPO, shortcut learning in critics, and hard-negative design.
+- **Day 4 — Evaluation and Statistics:** reliability of small held-out sets, adaptive reuse of validation splits, and statistical interpretation of benchmark claims.
 
 ## Public Artifact URLs
 
@@ -17,26 +28,43 @@ The Day 2 package centers on agent tool-use internals, specifically the differen
 - Day 3 blog post: https://open.substack.com/pub/nuryenigus/p/why-preference-tuned-critics-learn?r=8bo5sh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
 - Day 4 blog post: https://open.substack.com/pub/nuryenigus/p/how-much-should-you-trust-a-small?r=8bo5sh&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
 
-## Contents
+## Repository Structure
 
-- `DA1/question.md`: final sharpened question for the daily question vote
-- `DA1/morning_call_summary.md`: summary of how the morning call clarified and narrowed the question
-- `DA1/explainer.md`: full explainer addressing the selected knowledge gap
-- `DA1/thread.md`: short public-thread version of the explainer
-- `DA1/evening_call_summary.md`: summary of revision outcomes and final sign-off
-- `DA1/sources.md`: canonical references and local project evidence used in the explainer
-- `DA1/README.md`: Day 1 package overview and public artifact link
-- `DA2/README.md`: Day 2 package overview and public artifact link
-- `DA2/question.md`: Day 2 final sharpened question
-- `DA2/explainer.md`: Day 2 explainer written for the peer question
-- `DA3/README.md`: Day 3 package overview and public artifact link
-- `DA3/question.md`: Day 3 final sharpened question
-- `DA3/explainer.md`: Day 3 explainer written for the peer question
-- `DA4/README.md`: Day 4 package overview and public artifact link
-- `DA4/question.md`: Day 4 final sharpened question
-- `DA4/explainer.md`: Day 4 explainer written for the peer question
-- `docs/`: challenge and supporting reference documents for the week
+- `DA1/`: Day 1 package, including question, explainer, thread, call summaries, sign-off, grounding commit, sources, and day README
+- `DA2/`: Day 2 package, including question, explainer, thread, call summaries, sign-off, grounding commit, sources, and day README
+- `DA3/`: Day 3 package, including question, explainer, thread, call summaries, sign-off, grounding commit, sources, and day README
+- `DA4/`: Day 4 package, including question, explainer, thread, call summaries, sign-off, grounding commit, sources, and day README
+- `docs/`: challenge briefs and supporting reference materials for Weeks 10, 11, and 12
 
-## Status
+## Day-by-Day Focus
 
-This workspace is set up so each day can live in its own subfolder. Day 1 is stored in `DA1/`, and Day 2 is stored in `DA2/`. Later days in the week should continue as separate daily cycles with their own question, call summaries, explainer, thread, and supporting materials.
+### Day 1
+
+Grounded in TheConversionEngine prompt assembly and Week 11 latency artifacts. The main gap was understanding what actually happens during prefill and decode, how KV cache differs from provider-level prompt caching, and what prompt changes break reuse across turns.
+
+### Day 2
+
+Grounded in TheConversionEngine reply-routing and orchestration code. The main work separated deterministic orchestration from model-led tool use and also explored how structured reply classification and constrained outputs can create a safer boundary before downstream actions run.
+
+### Day 3
+
+Grounded in Week 11 Path B critic work and peer research on preference-tuned judges. The main focus was why pairwise objectives like SimPO and ORPO can reward lexical shortcuts before deeper business judgment, and how hard negatives can force a critic to learn the intended distinction.
+
+### Day 4
+
+Grounded in Week 11 evaluation artifacts and paired research on validation reliability. The main focus was how to interpret held-out accuracy when the held-out split is small and repeatedly reused during development, and how to separate sampling uncertainty from adaptive evaluation bias.
+
+## Purpose of the Submission
+
+The point of this repository is not just to collect blog posts. Each day is meant to close a real gap that affected how I described, evaluated, or designed systems I had already built in Weeks 10 and 11. The package therefore combines:
+
+- public-facing technical writing
+- paired research and feedback records
+- source-backed explanations
+- grounded portfolio implications
+
+## Reference
+
+The repository follows the Week 12 challenge structure described in:
+
+- `docs/TRP1 Challenge Week 12_  Knowledge Gap Formulation for Compounding .md`
